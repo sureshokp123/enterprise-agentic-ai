@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environment
+venv/
+venv311/
+
+# Environment Variables
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Python
+*.log
+
+# SQLite (Optional)
+# data/company.db
+
+# OS
+Thumbs.db
+.DS_Store

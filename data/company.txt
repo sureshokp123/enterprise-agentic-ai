@@ -1,0 +1,8 @@
+Company Name: ABC Technologies
+
+Products:
+- Banking Platform
+- AI Assistant
+- CRM System
+
+Total Employees: 2500
