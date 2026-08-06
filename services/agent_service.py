@@ -1,21 +1,34 @@
-from agent.ai_agent import ask_llm, summarize
+from agent.ai_agent import summarize
+from agent.graph import agent_graph
 from client.mcp_client import MCPClient
 from memory.conversation import ConversationMemory
 
 memory = ConversationMemory()
 
+
 async def process_question(question: str):
 
     memory.add_user(question)
 
-    llm_response = ask_llm(memory.get_messages())
+    # LangGraph Planner
+    state = agent_graph.invoke(
+        {
+            "question": question,
+            "llm_response": None,
+            "tool_name": "",
+            "tool_args": {},
+            "tool_result": None,
+            "final_answer": "",
+        }
+    )
 
-    if isinstance(llm_response, str):
-        memory.add_assistant(llm_response)
-        return llm_response
+    # If planner answered directly
+    if state.get("final_answer"):
+        memory.add_assistant(state["final_answer"])
+        return state["final_answer"]
 
-    tool_name = llm_response["tool"]
-    arguments = llm_response["arguments"]
+    tool_name = state["tool_name"]
+    arguments = state["tool_args"]
 
     client = MCPClient()
 

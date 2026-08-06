@@ -1,8 +1,4 @@
-# from ollama import chat
-
-print("########## VERSION 2 ##########")
 import json
-import os
 from openai import OpenAI
 from config import (
     AZURE_OPENAI_ENDPOINT,
@@ -14,15 +10,6 @@ client = OpenAI(
     api_key=AZURE_OPENAI_API_KEY,
     base_url=AZURE_OPENAI_ENDPOINT,
 )
-# from ollama import Client
-
-# OLLAMA_HOST = os.getenv(
-#     "OLLAMA_HOST",
-#     "http://host.docker.internal:11434"
-# )
-
-# client = Client(host=OLLAMA_HOST)
-# MODEL_NAME = os.getenv("OLLAMA_MODEL", "qwen2.5:3b")
 
 SYSTEM_PROMPT = """
 You are an AI Agent.
@@ -108,28 +95,6 @@ If no tool is required, answer normally.
 
 def ask_llm(messages):
     print("Using Azure OpenAI")
-    # response = chat(
-    #     model="qwen2.5:7b",
-    #     messages=[
-    #         {
-    #             "role": "system",
-    #             "content": SYSTEM_PROMPT,
-    #         },
-    #         *messages
-    #     ],
-    # )
-    # response = client.chat(
-    #     model=MODEL_NAME,
-    #     messages=[
-    #         {
-    #             "role": "system",
-    #             "content": SYSTEM_PROMPT,
-    #         },
-    #         *messages
-    #     ],
-    # )
-
-    # content = response["message"]["content"]
 
     response = client.responses.create(
         model=AZURE_OPENAI_MODEL,
