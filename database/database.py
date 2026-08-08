@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-
-DATABASE_URL = "postgresql://postgres:Sureshokp1205@localhost:5432/enterprise_agentic_ai"
+from config import DATABASE_URL
+# DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(DATABASE_URL)
 

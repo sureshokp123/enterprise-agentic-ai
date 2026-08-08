@@ -9,6 +9,9 @@ TOOL_SERVER_MAP = {
 
     "get_all_employees": "servers/sqlite_server.py",
     "get_employee_by_id": "servers/sqlite_server.py",
+    "delete_employee": "servers/sqlite_server.py",
+    "update_employee": "servers/sqlite_server.py",
+    "add_employee": "servers/sqlite_server.py",
 }
 
 class MCPClient:

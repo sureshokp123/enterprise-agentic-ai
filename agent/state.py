@@ -1,10 +1,22 @@
 from typing import TypedDict
 
-class AgentState(TypedDict):
+
+class AgentState(TypedDict, total=False):
     question: str
-    llm_response: str
-    agent: str
+
+    # Supervisor
+    route: str
+
+    # RAG
+    context: str
+
+    # MCP
     tool_name: str
     tool_args: dict
     tool_result: str
-    final_answer: str
+
+    # LLM
+    answer: str
+    
+    approved: bool
+    approval_required: bool
