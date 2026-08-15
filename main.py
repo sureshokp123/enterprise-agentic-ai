@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from agent.graph import graph
 from agents.tool_node import tool_node
 from agents.llm_node import llm_node
+from database.seed_employees import seed_employees
 
 app = FastAPI()
 
@@ -21,6 +22,8 @@ app.add_middleware(
 class ChatRequest(BaseModel):
     question: str
 
+
+seed_employees()
 
 @app.post("/chat")
 def chat(request: ChatRequest):
