@@ -2,16 +2,28 @@ import asyncio
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
+# TOOL_SERVER_MAP = {
+#     "add": "servers/calculator_server.py",
+#     "multiply": "servers/calculator_server.py",
+#     "read_file": "servers/filesystem_server.py",
+
+#     "get_all_employees": "servers/sqlite_server.py",
+#     "get_employee_by_id": "servers/sqlite_server.py",
+#     "delete_employee": "servers/sqlite_server.py",
+#     "update_employee": "servers/sqlite_server.py",
+#     "add_employee": "servers/sqlite_server.py",
+# }
+
 TOOL_SERVER_MAP = {
     "add": "servers/calculator_server.py",
     "multiply": "servers/calculator_server.py",
     "read_file": "servers/filesystem_server.py",
-
-    "get_all_employees": "servers/sqlite_server.py",
-    "get_employee_by_id": "servers/sqlite_server.py",
-    "delete_employee": "servers/sqlite_server.py",
-    "update_employee": "servers/sqlite_server.py",
-    "add_employee": "servers/sqlite_server.py",
+    
+    "get_all_employees": "servers/postgres_server.py",
+    "get_employee_by_id": "servers/postgres_server.py",
+    "delete_employee": "servers/postgres_server.py",
+    "update_employee": "servers/postgres_server.py",
+    "add_employee": "servers/postgres_server.py",
 }
 
 class MCPClient:
