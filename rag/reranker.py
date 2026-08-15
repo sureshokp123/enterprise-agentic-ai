@@ -1,10 +1,17 @@
 from sentence_transformers import CrossEncoder
 
+reranker_model = None
 
-# Load once when the application starts
-reranker_model = CrossEncoder(
-    "BAAI/bge-reranker-base"
-)
+
+def get_reranker_model():
+    global reranker_model
+
+    if reranker_model is None:
+        reranker_model = CrossEncoder(
+            "BAAI/bge-reranker-base"
+        )
+
+    return reranker_model
 
 
 def rerank_documents(
@@ -14,15 +21,6 @@ def rerank_documents(
 ):
     """
     Rerank retrieved documents using a cross-encoder.
-
-    query:
-        User question
-
-    documents:
-        Documents returned by pgvector
-
-    top_k:
-        Number of final documents to return
     """
 
     if not documents:
@@ -33,7 +31,9 @@ def rerank_documents(
         for document in documents
     ]
 
-    scores = reranker_model.predict(pairs)
+    model = get_reranker_model()
+
+    scores = model.predict(pairs)
 
     reranked_documents = []
 
@@ -47,7 +47,6 @@ def rerank_documents(
             reranked_document
         )
 
-    # Highest reranker score = most relevant
     reranked_documents.sort(
         key=lambda x: x["rerank_score"],
         reverse=True
