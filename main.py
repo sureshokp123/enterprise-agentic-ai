@@ -72,3 +72,10 @@ def approve(request: ApprovalRequest):
     return {
         "answer": state["answer"]
     }
+
+@app.get("/health")
+def health():
+    return {
+        "status": "ok",
+        "service": "enterprise-agentic-ai"
+    }

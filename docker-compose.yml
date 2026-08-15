@@ -32,7 +32,7 @@ version: "3.9"
 services:
   fastapi:
     build: .
-    container_name: mcp-ai-agent
+    container_name: enterprise-agentic-ai
 
     ports:
       - "8000:8000"
