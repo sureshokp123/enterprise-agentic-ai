@@ -22,7 +22,7 @@ app.add_middleware(
 class ChatRequest(BaseModel):
     question: str
 
-seed_employees()  # Seed the database with initial employees
+# seed_employees()  # Seed the database with initial employees
 
 @app.post("/chat")
 def chat(request: ChatRequest):
