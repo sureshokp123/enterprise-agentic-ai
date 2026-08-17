@@ -21,12 +21,19 @@ def tool_node(state):
     # -----------------------------
     if "all employees" in question:
 
+        # print("\n[TOOL NODE]")
+        # print("Question :", question)
+        
         result = asyncio.run(
             client.call_tool(
                 "get_all_employees",
                 {}
             )
         )
+
+        # print("\n[MCP TOOL RESULT]")
+        # print(result)
+        # print("====================")
 
     # -----------------------------
     # Delete employee
