@@ -1,16 +1,7 @@
-# from sqlalchemy import create_engine, text
-# # from config import DATABASE_URL
-
-# engine = create_engine("postgresql://postgres:Sureshokp1205@localhost:5432/enterprise_agentic_ai")
-
-# with engine.connect() as conn:
-#     print("Database:", conn.execute(text("SELECT current_database()")).scalar())
-#     print("Extensions:", conn.execute(text("SELECT extname FROM pg_extension")).fetchall())
-
 from sqlalchemy import create_engine, text
-# from config import DATABASE_URL
+from config import DATABASE_URL
 
-engine = create_engine("postgresql://postgres:Sureshokp1205@localhost:5432/enterprise_agentic_ai")
+engine = create_engine(DATABASE_URL)
 
 with engine.connect() as conn:
     print("=" * 50)
